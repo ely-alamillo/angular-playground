@@ -17,6 +17,10 @@
       "git add"
     ]
   },
+  "engines": {
+    "npm": ">=5",
+    "node": ">=8"
+  },
   "private": true,
   "dependencies": {
     "@angular/animations": "^5.1.0",

@@ -21,6 +21,6 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
     this.effectsGithubService.fetchGithubUser();
 
-    this.githubUsers$ = this.stateGithubService.getUsers().do(console.log);
+    this.githubUsers$ = this.stateGithubService.getUsers();
   }
 }
