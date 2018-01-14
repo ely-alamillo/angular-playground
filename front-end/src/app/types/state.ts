@@ -6,6 +6,6 @@ import { GithubUserMap, GithubNodeMap } from "./github";
 
 export interface FrontEndApp {
   frontEndApp: {
-    github: GithubNodeMap
+    github: GithubNodeMap;
   };
 }

@@ -21,14 +21,16 @@ export interface GithubUser {
   repos_url: string;
   events_url: string;
   received_events_url: string;
-  "type": string;
+  type: string;
   site_admin: boolean;
 }
 
-export interface GithubUserMap extends Map<Keys<GithubUser>, GithubUser[Keys<GithubUser>]> {}
+export interface GithubUserMap
+  extends Map<Keys<GithubUser>, GithubUser[Keys<GithubUser>]> {}
 
 export interface GithubNode {
   users: List<GithubUserMap>;
 }
 
-export interface GithubNodeMap extends Map<Keys<GithubNode>, GithubNode[Keys<GithubNode>]> {}
+export interface GithubNodeMap
+  extends Map<Keys<GithubNode>, GithubNode[Keys<GithubNode>]> {}
