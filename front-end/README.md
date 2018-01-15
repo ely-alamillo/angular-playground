@@ -9,4 +9,8 @@ Run the Project
 ```bash
 $ npm start
 ```
-The first time you run this it will open the browser in port `4200`
+Open your browser and go to `localhost:4200`
+
+_The application has live reloading setup so you should see the changes you've made after you've saved it._
+
+#### Have Fun!
