@@ -31,5 +31,6 @@ Use the Bootstrap 4 classes to render the cards in 3 columns accross the screen.
 ## Success
 You have successfully performed this task if you have rendered the list of users in 3 columns on the screen.
 
+#### Have fun!
 [store]: https://github.com/ngrx/platform/blob/master/docs/store/README.md
 [effects]: https://github.com/ngrx/platform/blob/master/docs/effects/README.md
