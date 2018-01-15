@@ -10,17 +10,4 @@ import { EffectsGithubService, StateGithubService } from "./services";
   templateUrl: "./app.component.html",
   styleUrls: ["./app.component.css"]
 })
-export class AppComponent implements OnInit {
-  public githubUsers$: Observable<List<GithubUserMap>>;
-
-  constructor(
-    private effectsGithubService: EffectsGithubService,
-    private stateGithubService: StateGithubService
-  ) {}
-
-  ngOnInit(): void {
-    this.effectsGithubService.fetchGithubUser();
-
-    this.githubUsers$ = this.stateGithubService.getUsers();
-  }
-}
+export class AppComponent {}
