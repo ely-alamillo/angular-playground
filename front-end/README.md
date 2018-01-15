@@ -13,7 +13,7 @@ Open your browser and go to `localhost:4200`
 
 _The application has live reloading setup so you should see the changes you've made after you've saved it._
 
-Proceed to the first [task][rendering]
+Proceed to [Introduction][intro]
 
-[rendering]: Tasks/Rendering.md
+[intro]: Tasks/Intro.md
 #### Have Fun!
