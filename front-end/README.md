@@ -1,4 +1,4 @@
-# FrontEndEval
+# Front End Fun with Angular
 
 Install the dependencies
 ```bash
