@@ -16,7 +16,7 @@ For example.
 * `SetUsersService` - This service will contain methods to manipulate the state of the users entity.
 * `EffectsUsersServive` - This service will contain methods that will cause side effects involving the users entity.
 
-## First task
+## Task
 * Access the state of the users from the `store` and pass them down to shared `card component`
 
 #### Card Component
@@ -28,7 +28,7 @@ _Use the Redux devtools so you can visually inspect the contents of the store_
 
 Use the Bootstrap 4 classes to render the cards in 3 columns accross the screen.
 
-#### Success
+## Success
 You have successfully performed this task if you have rendered the list of users in 3 columns on the screen.
 
 [store]: https://github.com/ngrx/platform/blob/master/docs/store/README.md
