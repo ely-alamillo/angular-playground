@@ -26,5 +26,7 @@ for `avatarUrl`, and `html_url` for `cardHref`.
 
 _Use the Redux devtools so you can visually inspect the contents of the store_
 
+Use the Bootstrap 4 classes to render the cards in 3 columns accross the screen.
+
 [store]: https://github.com/ngrx/platform/blob/master/docs/store/README.md
 [effects]: https://github.com/ngrx/platform/blob/master/docs/effects/README.md
