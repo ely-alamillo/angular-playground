@@ -4,9 +4,9 @@
         <div *ngFor="let user of (githubUsers$ | async)">
             <div class="col-sm">
                 <card [cardTitle]="user.get('login')"
-                    [cardText]="user.get('type')"
-                    [avatarUrl]="user.get('avatar_url')"
-                    [cardHref]="user.get('html_url')">
+                      [cardText]="user.get('type')"
+                      [avatarUrl]="user.get('avatar_url')"
+                      [cardHref]="user.get('html_url')">
                 </card>
             </div>
         </div>
