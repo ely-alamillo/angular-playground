@@ -1,4 +1,4 @@
-# Task
+# Rendering
 
 This application has state management set in place. <br />
 It's using [ngrx/store][store] to manage state and [ngrx/effects][effects] to make side effects,
@@ -27,6 +27,9 @@ for `avatarUrl`, and `html_url` for `cardHref`.
 _Use the Redux devtools so you can visually inspect the contents of the store_
 
 Use the Bootstrap 4 classes to render the cards in 3 columns accross the screen.
+
+#### Success
+You have successfully performed this task if you have rendered the list of users in 3 columns on the screen.
 
 [store]: https://github.com/ngrx/platform/blob/master/docs/store/README.md
 [effects]: https://github.com/ngrx/platform/blob/master/docs/effects/README.md
