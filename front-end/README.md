@@ -15,5 +15,5 @@ _The application has live reloading setup so you should see the changes you've m
 
 Proceed to the first [task][rendering]
 
-[rendering]: "Tasks/Rendering.md"
+[rendering]: Tasks/Rendering.md
 #### Have Fun!
