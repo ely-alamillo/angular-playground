@@ -1,0 +1,11 @@
+<div>
+    <button type="button" routerLink="/dolphin" class="btn blue">
+        <span>Dolphin</span>
+    </button>
+    <button type="button" routerLink="/tiger" class="btn orange">
+        <span>Tiger</span>
+    </button>
+</div>
+<div [@routerAnimation]="getRouteAnimation(route)">
+    <router-outlet #route="outlet"></router-outlet> 
+</div>
