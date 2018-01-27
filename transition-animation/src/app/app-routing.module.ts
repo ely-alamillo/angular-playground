@@ -3,8 +3,9 @@ import { Routes, RouterModule } from "@angular/router";
 import { Tiger, Dolphin } from "./components";
 
 const routes: Routes = [
-  {path: "tiger", component: Tiger, data: {animation: "tiger"}},
-  {path: "dolphin", component: Dolphin, data: {animation: "dolphin"}}
+  { path: "", redirectTo: "/dolphin", pathMatch: "full" },
+  { path: "tiger", component: Tiger, data: {animation: "tiger"} },
+  { path: "dolphin", component: Dolphin, data: {animation: "dolphin"} }
 ];
 
 @NgModule({
