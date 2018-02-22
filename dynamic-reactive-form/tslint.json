@@ -2,7 +2,13 @@
   "rulesDirectory": [
     "node_modules/codelyzer"
   ],
+  "extends": [
+    "tsline-immutable"
+  ],
   "rules": {
+    "no-var-keyword": true,
+    "no-parameter-reassignment": true,
+    "typedef": [true, "call-signature"],
     "arrow-return-shorthand": true,
     "callable-types": true,
     "class-name": true,
@@ -86,7 +92,7 @@
     "prefer-const": true,
     "quotemark": [
       true,
-      "single"
+      "double"
     ],
     "radix": true,
     "semicolon": [
