@@ -1,3 +1,6 @@
-<div>
-  test
-</div>
+<form [formGroup]="personEditForm" class="form-inline">
+  <div class="form-group">
+    <label>Name</label>
+    <input type="text" class="form-control mx-sm-2" formControlName="name" />
+  </div>
+</form>
