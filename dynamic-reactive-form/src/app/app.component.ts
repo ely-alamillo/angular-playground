@@ -12,4 +12,8 @@ export class AppComponent {
   constructor() {
     this.person = person;
   }
+
+  setFormInput(f: any) {
+    console.log(f);
+  }
 }

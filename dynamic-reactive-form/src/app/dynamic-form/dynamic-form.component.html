@@ -1,22 +1,39 @@
 <form novalidate [formGroup]="form">
-  <div *ngFor="let prop of formModel">
-    <label [attr.for]="prop">{{prop.label}}</label>
-    <div [ngSwitch]="prop.type">
-      <input *ngSwitchCase="'text'"
-        [formControlName]="prop.key"
-        [id]="prop.key"
-        [type]="prop.type" />
-      <div *ngSwitchCase="'select'">
-        <select [formControlName]="prop.key">
-          <option *ngFor="let option of prop.options"
-            [value]="option.value">
-            <input type="radio"
-              [name]="prop.key"
-              [formControlName]="prop.key"
-              [value]="option.value"> {{option.label}}
-          </option>
-        </select>
-      </div>
+
+    <div *ngFor="let prop of formModel">
+        <div [ngSwitch]="prop.type">
+          <div class="form-group row">
+            <label [attr.for]="prop" class="col-sm-2 col-form-label">{{prop.label}}</label>
+            <div class="col-md-10">
+              <input *ngSwitchCase="'text'"
+                class="form-control mx-sm-3"
+                [formControlName]="prop.key"
+                [id]="prop.key"
+                [type]="prop.type" />
+            </div>
+          </div>
+            <div *ngSwitchCase="'select'">
+              <select [formControlName]="prop.key" class="form-control">
+                <option *ngFor="let option of prop.options"
+                  [value]="option.value">
+                  {{option.label}}
+                </option>
+              </select>
+            </div>
+            <div *ngSwitchCase="'radio'">
+              <div class="form-check form-check-inline" *ngFor="let option of prop.options">
+                <input type="radio"
+                  class="form-check-input"
+                  [name]="prop.key"
+                  [formControlName]="prop.key"
+                  [value]="option.value"
+                />
+                <label class="form-check-label">
+                  {{option.label}}
+                </label>
+              </div>
+            </div>
+          </div>
     </div>
-  </div>
+
 </form>

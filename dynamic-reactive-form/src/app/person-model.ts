@@ -1,3 +1,11 @@
+
+interface InputModel<V> {
+  label: string;
+  value: V;
+  type: string;
+  validation?: Validation
+}
+
 interface Validation {
   required: boolean;
 }
@@ -31,8 +39,8 @@ interface City {
 }
 
 export interface Person {
-  name: Name;
-  age: Age;
+  name: InputModel<string>;
+  age: InputModel<number>;
   gender: Gender;
   city: City;
 }
@@ -49,7 +57,10 @@ export const person: Person = {
     age: {
       label: "Age",
       value: 32,
-      type: "text"
+      type: "text",
+      validation: {
+        required: true
+      }
     },
     gender: {
       label: "Gender",

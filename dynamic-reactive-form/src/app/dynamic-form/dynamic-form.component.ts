@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, OnInit } from "@angular/core";
+import { Component, Input, OnChanges, OnInit, Output, EventEmitter } from "@angular/core";
 import { FormGroup, FormControl, Validators, ValidatorFn } from "@angular/forms";
 import { concat, keys, map } from "sanctuary";
 
@@ -13,6 +13,7 @@ interface ModelValidator {
 })
 export class DynamicForm implements OnInit {
   @Input() model: any;
+  @Output() formInput = new EventEmitter();
 
   public formModel: any;
   public form: FormGroup;
@@ -22,6 +23,9 @@ export class DynamicForm implements OnInit {
       concat({key: k})(this.model[k]))(keys(this.model));
 
     this.form = this.initForm();
+
+    this.form.valueChanges.subscribe(inp => this.formInput.emit(inp))
+
   }
 
   initForm(): FormGroup {
@@ -40,4 +44,9 @@ export class DynamicForm implements OnInit {
     const { required, min } = Validators;
     return Object.keys(this.isNil(v) ? [] : v).map(k => k === "required" ? required : min(v[k]))
   }
+
+  // isShowError(f: FormGroup, key) {
+  // form.get(prop.key).invalid && (form.get(prop.key).dirty || form.get(prop.key).touched)
+  //   return f.get(key)
+  // }
 }
