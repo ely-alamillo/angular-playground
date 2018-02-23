@@ -1,28 +1,34 @@
-import { Component, Input, OnChanges } from "@angular/core";
+import { Component, Input, OnChanges, OnInit } from "@angular/core";
 import { FormGroup, FormControl, Validators, ValidatorFn } from "@angular/forms";
 import { concat, keys, map } from "sanctuary";
+
+interface ModelValidator {
+  required: boolean;
+  [key: string]: any;
+}
 
 @Component({
   selector: "dynamic-form",
   templateUrl: "./dynamic-form.component.html"
 })
-export class DynamicForm implements OnChanges {
+export class DynamicForm implements OnInit {
   @Input() model: any;
 
   public formModel: any;
   public form: FormGroup;
 
-  ngOnChanges() {
+  ngOnInit() {
     this.formModel = map((k: string) =>
-      concat({keys: k})(this.model[k]))(keys(this.model));
-    this.initForm();
+      concat({key: k})(this.model[k]))(keys(this.model));
+
+    this.form = this.initForm();
   }
 
   initForm(): FormGroup {
-    const validateFormCtrl = (v: string) => this.isNil(v) ? "" : v;
+    const safeValue = (v: string) => this.isNil(v) ? "" : v;
 
     return new FormGroup(keys(this.model)
-      .map(k => ({[k]: new FormControl(validateFormCtrl(this.model.value), this.mapValidators(this.model[k].validation))}))
+      .map(k => ({[k]: new FormControl(safeValue(this.model.value), this.mapValidators(this.model[k].validation))}))
       .reduceRight((acc, v) => concat(v) (acc), {}));
   }
 
@@ -30,9 +36,8 @@ export class DynamicForm implements OnChanges {
     return n === undefined || n === null;
   }
 
-  mapValidators(v: any): ValidatorFn[] {
+  mapValidators<V>(v: ModelValidator): ValidatorFn[] {
     const { required, min } = Validators;
-
     return Object.keys(this.isNil(v) ? [] : v).map(k => k === "required" ? required : min(v[k]))
   }
 }
