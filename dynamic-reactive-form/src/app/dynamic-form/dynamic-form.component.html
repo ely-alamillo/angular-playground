@@ -1,4 +1,4 @@
-<form novalidate [formGroup]="form">
+<form novalidate [formGroup]="form" (ngSubmit)="submitForm(form.value)">
     <div *ngFor="let prop of formModel">
         <div [ngSwitch]="prop.type">
 
@@ -13,6 +13,11 @@
                       [id]="prop.key"
                       [type]="prop.type"
                       class="form-control" />
+                    <ng-container *ngIf="isShowError(form, prop.key)">
+                      <small class="form-text text-muted">
+                        {{prop.validationMsg}}
+                      </small>
+                    </ng-container>
                   </div>
               </div>
             </ng-container>
@@ -54,6 +59,8 @@
                 </fieldset>
               </ng-container>
 
+
         </div>
     </div>
+    <button class="btn btn-success" type="submit">Submit</button>
 </form>

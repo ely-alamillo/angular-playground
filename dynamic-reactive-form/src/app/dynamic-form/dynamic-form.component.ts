@@ -1,7 +1,6 @@
 import { Component, Input, OnChanges, OnInit, Output, EventEmitter } from "@angular/core";
 import { FormGroup, FormControl, Validators, ValidatorFn } from "@angular/forms";
 import { concat, keys, map } from "sanctuary";
-import { v4 } from "uuid";
 
 interface ModelValidator {
   required: boolean;
@@ -14,14 +13,14 @@ interface ModelValidator {
 })
 export class DynamicForm implements OnInit {
   @Input() model: any;
-  @Output() formInput = new EventEmitter();
+  @Output() formChanges = new EventEmitter<{[key: string]: any}>();
+  @Output() formSubmit = new EventEmitter<{[key: string]: any}>();
 
   public formModel: any;
   public form: FormGroup;
   public  uuid: string;
 
   constructor() {
-    this.uuid = v4();
   }
 
   ngOnInit(): void {
@@ -30,7 +29,7 @@ export class DynamicForm implements OnInit {
 
     this.form = this.initForm();
 
-    this.form.valueChanges.subscribe(inp => this.formInput.emit(inp));
+    this.form.valueChanges.subscribe(inp => this.formChanges.emit(inp));
 
   }
 
@@ -51,8 +50,13 @@ export class DynamicForm implements OnInit {
     return Object.keys(this.isNil(v) ? [] : v).map(k => k === "required" ? required : min(v[k]));
   }
 
-  // isShowError(f: FormGroup, key) {
-  // f.get(prop.key).invalid && (f.get(prop.key).dirty || f.get(prop.key).touched)
-  //   return f.get(key)
-  // }
+  submitForm(fv: any): void {
+    this.formSubmit.emit(fv);
+  }
+
+  isShowError(f: FormGroup, key: string): boolean {
+    return this.isNil(f)
+      ? false
+      : f.get(key).invalid && (f.get(key).dirty || f.get(key).touched);
+  }
 }

@@ -3,6 +3,7 @@ interface InputModel<V> {
   value: V;
   type: string;
   validation?: Validation;
+  validationMsg?: string;
   options?: ReadonlyArray<Partial<InputModel<V>>>;
 }
 
@@ -25,7 +26,8 @@ export const person: Person = {
       type: "text",
       validation: {
         required: true
-      }
+      },
+      validationMsg: "Input is required."
     },
     lastName: {
       label: "Last Name",
