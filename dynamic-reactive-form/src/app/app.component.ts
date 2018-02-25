@@ -17,12 +17,12 @@ export class AppComponent {
   constructor() {
     this.person = person;
 
-    const windowPred = (width: number) => width < 800 ? false : true;
+    const widthPred = (width: number) => width < 800 ? false : true;
 
     this.isShow = Observable.fromEvent(window, "resize")
       .map((w: Event) => (w.target as Window).innerWidth)
-      .map(windowPred)
-      .startWith(windowPred(window.innerWidth));
+      .map(widthPred)
+      .startWith(widthPred(window.innerWidth));
   }
 
   setFormInput(f: any): void {
