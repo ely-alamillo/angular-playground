@@ -30,15 +30,17 @@
                   <div class="row">
                     <legend class="col-form-label col-sm-2 pt-0">{{prop.label}}</legend>
                     <div class="col-sm-10">
-                        <div class="form-check" *ngFor="let option of prop.options; let i = index">
-                          <input type="radio"
-                            [name]="prop.key"
-                            [attr.id]="i"
-                            [value]="option.value"
-                            [formControlName]="prop.key" />
-                          <label class="form-check-label" [for]="option.label">
-                          {{option.label}}
-                          </label>
+                        <div class="form-check" >
+                          <div *ngFor="let option of prop.options; let i = index">
+                            <input type="radio"
+                              [name]="prop.key"
+                              [attr.id]="i"
+                              [value]="option.value"
+                              [formControlName]="prop.key" />
+                            <label class="form-check-label" [for]="i">
+                            {{option.label}}
+                            </label>
+                          </div>
                         </div>
                     </div>
                   </div>
