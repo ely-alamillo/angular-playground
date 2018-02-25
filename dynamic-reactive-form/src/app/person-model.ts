@@ -1,53 +1,34 @@
-
 interface InputModel<V> {
   label: string;
   value: V;
   type: string;
-  validation?: Validation
+  validation?: Validation;
+  options?: ReadonlyArray<Partial<InputModel<V>>>;
 }
 
 interface Validation {
   required: boolean;
 }
 
-interface Name {
-  label: string;
-  value: string;
-  type: string;
-  validation: Validation;
-}
-
-interface Age {
-  label: string;
-  value: number;
-  type: string;
-}
-
-interface Gender {
-  label: string;
-  value: string;
-  type: string;
-  options: ReadonlyArray<{label: string; value: string}>;
-}
-
-interface City {
-  label: string;
-  value: string;
-  type: string;
-  options: ReadonlyArray<{label: string; value: string}>;
-  validation: Validation;
-}
-
 export interface Person {
-  name: InputModel<string>;
+  firstName: InputModel<string>;
+  lastName: InputModel<string>;
   age: InputModel<number>;
-  gender: Gender;
-  city: City;
+  gender: InputModel<string>;
+  city: InputModel<string>;
 }
 
 export const person: Person = {
-    name: {
-      label: "Name",
+    firstName: {
+      label: "First Name",
+      value: "Juri",
+      type: "text",
+      validation: {
+        required: true
+      }
+    },
+    lastName: {
+      label: "Last Name",
       value: "Juri",
       type: "text",
       validation: {

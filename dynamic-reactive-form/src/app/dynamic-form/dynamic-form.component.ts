@@ -18,13 +18,13 @@ export class DynamicForm implements OnInit {
   public formModel: any;
   public form: FormGroup;
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.formModel = map((k: string) =>
       concat({key: k})(this.model[k]))(keys(this.model));
 
     this.form = this.initForm();
 
-    this.form.valueChanges.subscribe(inp => this.formInput.emit(inp))
+    this.form.valueChanges.subscribe(inp => this.formInput.emit(inp));
 
   }
 
@@ -42,11 +42,11 @@ export class DynamicForm implements OnInit {
 
   mapValidators<V>(v: ModelValidator): ValidatorFn[] {
     const { required, min } = Validators;
-    return Object.keys(this.isNil(v) ? [] : v).map(k => k === "required" ? required : min(v[k]))
+    return Object.keys(this.isNil(v) ? [] : v).map(k => k === "required" ? required : min(v[k]));
   }
 
   // isShowError(f: FormGroup, key) {
-  // form.get(prop.key).invalid && (form.get(prop.key).dirty || form.get(prop.key).touched)
+  // f.get(prop.key).invalid && (f.get(prop.key).dirty || f.get(prop.key).touched)
   //   return f.get(key)
   // }
 }

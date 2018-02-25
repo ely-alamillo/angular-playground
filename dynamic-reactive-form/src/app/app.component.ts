@@ -13,7 +13,7 @@ export class AppComponent {
     this.person = person;
   }
 
-  setFormInput(f: any) {
+  setFormInput(f: any): void {
     console.log(f);
   }
 }

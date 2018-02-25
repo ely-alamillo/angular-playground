@@ -3,7 +3,7 @@
     "node_modules/codelyzer"
   ],
   "extends": [
-    "tsline-immutable"
+    "tslint-immutable"
   ],
   "rules": {
     "no-var-keyword": true,
