@@ -1,8 +1,8 @@
 <form novalidate [formGroup]="form">
     <div *ngFor="let prop of formModel">
         <div [ngSwitch]="prop.type">
-          <div class="form-group row">
 
+          <div class="form-group row">
               <label *ngSwitchCase="'text'" [attr.for]="prop" class="col-sm-2 form-check-label">
                 {{prop.label}}
               </label>
@@ -15,6 +15,7 @@
                   [type]="prop.type"
                   class="form-control" />
               </div>
+          </div>
 
               <select *ngSwitchCase="'select'"
                 [formControlName]="prop.key">
@@ -24,36 +25,23 @@
                 </option>
               </select>
 
-              <!-- <fieldset class="form-group">
-                   <div class="row">
-                   <span *ngFor="let option of prop.options">
-                   <div class="form-check" *ngSwitchCase="'radio'">
-                   <input type="radio"
-                   [name]="prop.key"
-                   [formControlName]="prop.key"
-                   [value]="option.value"
-                   class="form-check-input"
-                   />
-                   <label class="form-check-label" [attr.for]="option.key">
-                   {{option.label}}
-                   </label>
-                   </div>
-                   </span>
-                   </div>
-                   </fieldset>
-              -->
-
-              <fieldset class="form-group">
-                <div class="row">
-                  <legend *ngSwitchCase="'radio'" class="col-form-label col-sm-2 pt0">{{prop.label}}</legend>
-                  <div class="col-sm-10">
-                    <div class="form-check">
-                      <input class="form-check-input" />
+              <span *ngSwitchCase="'radio'">
+                <fieldset class="form-group">
+                  <div class="row">
+                    <legend class="col-form-label col-sm-2 pt-0">{{prop.label}}</legend>
+                    <div class="col-sm-10">
+                      <span *ngFor="let option of prop.options">
+                        <div class="form-check">
+                              <input class="form-check-input" name="" type="radio" value=""/>
+                              <label class="form-check-label" for="">
+                              {{option.label}}
+                              </label>
+                        </div>
+                      </span>
                     </div>
                   </div>
-                </div>
-              </fieldset>
-          </div>
+                </fieldset>
+              </span>
 
         </div>
     </div>
