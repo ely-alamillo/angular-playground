@@ -1,4 +1,8 @@
-import { Component } from "@angular/core";
+import "rxjs/add/observable/fromEvent";
+import "rxjs/add/operator/map";
+import "rxjs/add/operator/startWith";
+import { Component, OnInit } from "@angular/core";
+import { Observable } from "rxjs/Observable";
 import { person, Person } from "./person-model";
 
 @Component({
@@ -8,9 +12,17 @@ import { person, Person } from "./person-model";
 })
 export class AppComponent {
   public person: Person;
+  public isShow: Observable<boolean>;
 
   constructor() {
     this.person = person;
+
+    const windowPred = (width: number) => width < 800 ? false : true;
+
+    this.isShow = Observable.fromEvent(window, "resize")
+      .map((w: Event) => (w.target as Window).innerWidth)
+      .map(windowPred)
+      .startWith(windowPred(window.innerWidth));
   }
 
   setFormInput(f: any): void {

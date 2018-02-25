@@ -27,7 +27,7 @@ export const person: Person = {
       validation: {
         required: true
       },
-      validationMsg: "Input is required."
+      validationMsg: "First name is required."
     },
     lastName: {
       label: "Last Name",
@@ -35,7 +35,8 @@ export const person: Person = {
       type: "text",
       validation: {
         required: true
-      }
+      },
+      validationMsg: "Last name is required."
     },
     age: {
       label: "Age",
