@@ -2,50 +2,57 @@
     <div *ngFor="let prop of formModel">
         <div [ngSwitch]="prop.type">
 
-          <div class="form-group row">
-              <label *ngSwitchCase="'text'" [attr.for]="prop" class="col-sm-2 form-check-label">
-                {{prop.label}}
-              </label>
-
-
-              <div class="col-sm-10">
-                <input *ngSwitchCase="'text'"
-                  [formControlName]="prop.key"
-                  [id]="prop.key"
-                  [type]="prop.type"
-                  class="form-control" />
+            <ng-container *ngSwitchCase="'text'">
+              <div class="form-group row">
+                  <label [attr.for]="prop" class="col-sm-2 form-check-label">
+                    {{prop.label}}
+                  </label>
+                  <div class="col-sm-10">
+                    <input
+                      [formControlName]="prop.key"
+                      [id]="prop.key"
+                      [type]="prop.type"
+                      class="form-control" />
+                  </div>
               </div>
-          </div>
+            </ng-container>
 
-              <select *ngSwitchCase="'select'"
-                [formControlName]="prop.key">
-                <option *ngFor="let option of prop.options"
-                  [value]="option.value">
-                  {{option.label}}
-                </option>
-              </select>
+            <ng-container *ngSwitchCase="'select'">
+              <div class="form-group row">
+                <label class="form-check-label col-sm-2">
+                  {{prop.label}}
+                </label>
+                <div class="col-sm-10">
+                  <select [formControlName]="prop.key" class="form-control">
+                    <option *ngFor="let option of prop.options"
+                      [value]="option.value">
+                      {{option.label}}
+                    </option>
+                  </select>
+                </div>
+              </div>
+            </ng-container>
 
-              <span *ngSwitchCase="'radio'">
+              <ng-container *ngSwitchCase="'radio'">
                 <fieldset class="form-group">
                   <div class="row">
                     <legend class="col-form-label col-sm-2 pt-0">{{prop.label}}</legend>
                     <div class="col-sm-10">
-                        <div class="form-check" >
-                          <div *ngFor="let option of prop.options; let i = index">
-                            <input type="radio"
-                              [name]="prop.key"
-                              [attr.id]="i"
-                              [value]="option.value"
-                              [formControlName]="prop.key" />
-                            <label class="form-check-label" [for]="i">
+                        <div class="form-check" *ngFor="let option of prop.options; let i = index">
+                          <input type="radio"
+                            [name]="prop.key"
+                            [attr.id]="i"
+                            [value]="option.value"
+                            [formControlName]="prop.key"
+                            class="form-check-input" />
+                          <label class="form-check-label" [for]="i">
                             {{option.label}}
-                            </label>
-                          </div>
+                          </label>
                         </div>
                     </div>
                   </div>
                 </fieldset>
-              </span>
+              </ng-container>
 
         </div>
     </div>
