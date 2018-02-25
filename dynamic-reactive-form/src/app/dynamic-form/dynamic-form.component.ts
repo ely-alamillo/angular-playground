@@ -1,6 +1,7 @@
 import { Component, Input, OnChanges, OnInit, Output, EventEmitter } from "@angular/core";
 import { FormGroup, FormControl, Validators, ValidatorFn } from "@angular/forms";
 import { concat, keys, map } from "sanctuary";
+import { v4 } from "uuid";
 
 interface ModelValidator {
   required: boolean;
@@ -17,6 +18,11 @@ export class DynamicForm implements OnInit {
 
   public formModel: any;
   public form: FormGroup;
+  public  uuid: string;
+
+  constructor() {
+    this.uuid = v4();
+  }
 
   ngOnInit(): void {
     this.formModel = map((k: string) =>
